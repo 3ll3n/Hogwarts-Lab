@@ -21,11 +21,11 @@ class Student
   def self.all()
     sql = "SELECT * FROM students"
     result = SqlRunner.run(sql)
-    # returns an array of students
-    return result.map{ |student| Student.new(student) }
+    # returns an array of student hashes
+    return result.map{ |student_hash| Student.new(student_hash) }
   end
 
-  def self.find(id)
+  def self.find(id)   
     sql = "SELECT * FROM students WHERE id = #{id}"
     student = SqlRunner.run(sql)
     result = Student.new(student.first)
